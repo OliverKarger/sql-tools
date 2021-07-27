@@ -1,4 +1,4 @@
-export function MySQL_GenSelectQuery(
+export function MySQL_Select(
     fields: string | string[],
     table: string,
     where?: {

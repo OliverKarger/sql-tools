@@ -3,7 +3,7 @@ export type InsertValuePair = {
     fieldValue: string;
 }
 
-export function MySQL_GenInsertQuery(
+export function MySQL_Insert(
     table: string,
     pairs: InsertValuePair[],
 ) {
