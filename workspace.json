@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "projects": {
+    "sql-tools": {
+      "root": "libs/sql-tools",
+      "sourceRoot": "libs/sql-tools/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/sql-tools/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/sql-tools"
+          ],
+          "options": {
+            "jestConfig": "libs/sql-tools/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/sql-tools",
+            "tsConfig": "libs/sql-tools/tsconfig.lib.json",
+            "packageJson": "libs/sql-tools/package.json",
+            "main": "libs/sql-tools/src/index.ts",
+            "assets": [
+              "libs/sql-tools/*.md"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
