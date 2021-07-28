@@ -10,16 +10,11 @@ interface params {
         orderBy: string | string[];
         direction: 'ASC' | 'DESC';
     }
-    limit?: {
-        begin: 'TOP' | 'BOTTOM';
-        range: number;
-    }
+    limit?: number
 };
 
 export function MySQL_Select(props: params): string {
-    // Select
     let query = 'SELECT ';
-    // Felder
     if (typeof props.fields === 'string') {
         query += props.fields;
     } else {
@@ -30,14 +25,11 @@ export function MySQL_Select(props: params): string {
             }
         }
     }
-    // Tabelle
     query += ' FROM ' + props.table;
-    // Where
     if (props.where !== undefined) {
-        query += ` WHERE ${props.where.field}${props.where.comparer}'${props.where.value}'`;
+        query += ` WHERE ${props.where.field} ${props.where.comparer} '${props.where.value}'`;
     }
     if (props.order !== undefined) {
-        // Sort
         query += ' ORDER BY ';
         if (typeof props.order.orderBy === 'string') {
             query += props.order.orderBy;
@@ -51,9 +43,8 @@ export function MySQL_Select(props: params): string {
         }
         query += ' ' + props.order.direction;
     }
-    // Limit
     if (props.limit !== undefined) {
-        query += ` LIMIT ${props.limit.begin} ${props.limit.range}`;
+        query += ` LIMIT ${props.limit}`;
     }
     return query;
 }
