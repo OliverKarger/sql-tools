@@ -1,21 +1,14 @@
-export type InsertValuePair = {
-    fieldName: string;
-    fieldValue: string;
-}
-
-export type params = {
-    table: string;
-    pairs: InsertValuePair[];
-};
-
-
-export function MySQL_Insert(props: params) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MySQL_Insert = void 0;
+function MySQL_Insert(props) {
     let query = `INSERT INTO ${props.table}(`;
     for (let itr = 0; itr <= props.pairs.length - 1; itr++) {
         query += props.pairs[itr].fieldName;
         if (itr !== props.pairs.length - 1) {
             query += ',';
-        } else {
+        }
+        else {
             query += ')';
         }
     }
@@ -24,9 +17,12 @@ export function MySQL_Insert(props: params) {
         query += `'${props.pairs[itr].fieldValue}'`;
         if (itr !== props.pairs.length - 1) {
             query += ',';
-        } else {
+        }
+        else {
             query += ')';
         }
     }
     return query;
 }
+exports.MySQL_Insert = MySQL_Insert;
+//# sourceMappingURL=Insert.js.map

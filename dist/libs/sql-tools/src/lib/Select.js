@@ -1,28 +1,15 @@
-interface params {
-    fields: string | string[];
-    table: string;
-    where?: {
-        field: string;
-        comparer: 'LIKE' | 'NOT LIKE' | '=' | '<' | '>' | '<=' | '>=';
-        value: string;
-    },
-    order?: {
-        orderBy: string | string[];
-        direction: 'ASC' | 'DESC';
-    }
-    limit?: {
-        begin: 'TOP' | 'BOTTOM';
-        range: number;
-    }
-};
-
-export function MySQL_Select(props: params): string {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MySQL_Select = void 0;
+;
+function MySQL_Select(props) {
     // Select
     let query = 'SELECT ';
     // Felder
     if (typeof props.fields === 'string') {
         query += props.fields;
-    } else {
+    }
+    else {
         for (let itr = 0; itr <= props.fields.length - 1; itr++) {
             query += props.fields[itr];
             if (itr !== props.fields.length - 1) {
@@ -41,7 +28,8 @@ export function MySQL_Select(props: params): string {
         query += ' ORDER BY ';
         if (typeof props.order.orderBy === 'string') {
             query += props.order.orderBy;
-        } else {
+        }
+        else {
             for (let itr = 0; itr <= props.order.orderBy.length - 1; itr++) {
                 query += props.order.orderBy[itr];
                 if (itr !== props.order.orderBy.length - 1) {
@@ -57,3 +45,5 @@ export function MySQL_Select(props: params): string {
     }
     return query;
 }
+exports.MySQL_Select = MySQL_Select;
+//# sourceMappingURL=Select.js.map
