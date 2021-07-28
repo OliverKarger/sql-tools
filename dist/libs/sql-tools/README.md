@@ -1,1 +1,10 @@
-# A simple Library to Create Querys. Other DBMS and Query types are coming soon. 
+# sql-tools
+
+This library was generated with [Nx](https://nx.dev).
+
+
+## Running unit tests
+
+Run `nx test sql-tools` to execute the unit tests via [Jest](https://jestjs.io).
+
+
