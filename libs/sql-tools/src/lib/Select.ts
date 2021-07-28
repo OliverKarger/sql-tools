@@ -36,17 +36,20 @@ export function MySQL_Select(props: params): string {
     if (props.where !== undefined) {
         query += ` WHERE ${props.where.field}${props.where.comparer}'${props.where.value}'`;
     }
-    // Sort
-    query += ' ORDER BY ';
-    if (typeof props.order.orderBy === 'string') {
-        query += props.order.orderBy;
-    } else {
-        for (let itr = 0; itr <= props.order.orderBy.length - 1; itr++) {
-            query += props.order.orderBy[itr];
-            if (itr !== props.order.orderBy.length - 1) {
-                query += ',';
+    if (props.order !== undefined) {
+        // Sort
+        query += ' ORDER BY ';
+        if (typeof props.order.orderBy === 'string') {
+            query += props.order.orderBy;
+        } else {
+            for (let itr = 0; itr <= props.order.orderBy.length - 1; itr++) {
+                query += props.order.orderBy[itr];
+                if (itr !== props.order.orderBy.length - 1) {
+                    query += ',';
+                }
             }
         }
+        query += ' ' + props.order.direction;
     }
     // Limit
     if (props.limit !== undefined) {
