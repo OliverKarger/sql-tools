@@ -1,0 +1,1 @@
+# A simple Library to Create Querys. Other DBMS and Query types are coming soon. 

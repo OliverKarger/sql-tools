@@ -3,23 +3,26 @@ export type InsertValuePair = {
     fieldValue: string;
 }
 
-export function MySQL_Insert(
-    table: string,
-    pairs: InsertValuePair[],
-) {
-    let query = `INSERT INTO ${table}(`;
-    for (let itr = 0; itr <= pairs.length - 1; itr++) {
-        query += pairs[itr].fieldName;
-        if (itr !== pairs.length - 1) {
+export type params = {
+    table: string;
+    pairs: InsertValuePair[];
+};
+
+
+export function MySQL_Insert(props: params) {
+    let query = `INSERT INTO ${props.table}(`;
+    for (let itr = 0; itr <= props.pairs.length - 1; itr++) {
+        query += props.pairs[itr].fieldName;
+        if (itr !== props.pairs.length - 1) {
             query += ',';
         } else {
             query += ')';
         }
     }
     query += ' VALUES (';
-    for (let itr = 0; itr <= pairs.length - 1; itr++) {
-        query += `'${pairs[itr].fieldValue}'`;
-        if (itr !== pairs.length - 1) {
+    for (let itr = 0; itr <= props.pairs.length - 1; itr++) {
+        query += `'${props.pairs[itr].fieldValue}'`;
+        if (itr !== props.pairs.length - 1) {
             query += ',';
         } else {
             query += ')';
