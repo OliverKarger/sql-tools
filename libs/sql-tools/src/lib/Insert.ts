@@ -8,7 +8,6 @@ export type params = {
     pairs: InsertValuePair[];
 };
 
-
 export function MySQL_Insert(props: params) {
     let query = `INSERT INTO ${props.table}(`;
     for (let itr = 0; itr <= props.pairs.length - 1; itr++) {
