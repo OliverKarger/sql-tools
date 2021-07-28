@@ -10,10 +10,7 @@ interface params {
         orderBy: string | string[];
         direction: 'ASC' | 'DESC';
     }
-    limit?: {
-        begin: 'TOP' | 'BOTTOM';
-        range: number;
-    }
+    limit?: number
 };
 
 export function MySQL_Select(props: params): string {
@@ -53,7 +50,7 @@ export function MySQL_Select(props: params): string {
     }
     // Limit
     if (props.limit !== undefined) {
-        query += ` LIMIT ${props.limit.begin} ${props.limit.range}`;
+        query += ` LIMIT ${props.limit}`;
     }
     return query;
 }
