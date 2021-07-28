@@ -1,11 +1,11 @@
-export type InsertValuePair = {
+interface InsertPair {
     fieldName: string;
     fieldValue: string;
 }
 
-export type params = {
+interface params {
     table: string;
-    pairs: InsertValuePair[];
+    pairs: InsertPair[];
 };
 
 export function MySQL_Insert(props: params) {

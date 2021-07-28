@@ -57,7 +57,7 @@ describe('MySQL Select Query erzeugen', () => {
     it(`Query: SELECT login,passwd FROM users WHERE uuid='1'`, async () => {
         const q = MySQL_Select({ fields: ['login', 'passwd'], table: 'users', where: { field: 'uuid', comparer: '=', value: '1' } });
         const data = await db.prepare(q).all();
-        expect(q).toBe(`SELECT login,passwd FROM users WHERE uuid='1'`);
+        expect(q).toBe(`SELECT login,passwd FROM users WHERE uuid = '1'`);
         expect(data[0].uuid).toBe(undefined);
         expect(data.length).toBe(1);
     });
