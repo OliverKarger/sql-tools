@@ -4,14 +4,14 @@ interface params {
     where?: {
         field: string;
         comparer: 'LIKE' | 'NOT LIKE' | '=' | '<' | '>' | '<=' | '>=';
-        value: string;
+        value: any;
     },
 
 };
 
 interface UpdatePair {
     field: string;
-    value: string
+    value: any
 };
 
 export function MySQL_Update(props: params): string {
