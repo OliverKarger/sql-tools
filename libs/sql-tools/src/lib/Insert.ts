@@ -1,6 +1,6 @@
 interface InsertPair {
     fieldName: string;
-    fieldValue: string;
+    fieldValue: any;
 }
 
 interface params {
